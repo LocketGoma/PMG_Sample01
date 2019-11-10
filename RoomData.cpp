@@ -5,6 +5,7 @@ RoomData::RoomData() {
 
 }
 bool RoomData::MakeRooms() {
+	int check = 0;
 	while (Roomlist.size() != MAX_Rooms) {
 		Room* tempRoom = new Room;
 
@@ -12,6 +13,12 @@ bool RoomData::MakeRooms() {
 		try {
 			while (addRooms(tempRoom) == false) {
 				tempRoom->Maker();
+
+
+				if (check++ > MAX_TRY) {
+					cout << "과도한 중복 체크로 인한 생성 중지" << endl;
+					return false;
+				}
 			}
 		}
 		catch (exception e) {
@@ -22,6 +29,7 @@ bool RoomData::MakeRooms() {
 	return true;
 }
 bool RoomData::MakeRooms(int max) {
+	int check = 0;
 	while (Roomlist.size() != max) {
 		Room* tempRoom = new Room;
 
@@ -29,6 +37,11 @@ bool RoomData::MakeRooms(int max) {
 		try {
 			while (addRooms(tempRoom) == false) {
 				tempRoom->Maker();
+
+				if (check++ > MAX_TRY) {
+					cout << "과도한 중복 체크로 인한 생성 중지" << endl;
+					return false;
+				}
 			}
 		}
 		catch (exception e) {
@@ -39,14 +52,13 @@ bool RoomData::MakeRooms(int max) {
 	return true;
 }
 bool RoomData::addRooms(Room* tempRoom) {
-	//if (CheckIntersection(tempRoom) == true)
+	if (CheckIntersection(tempRoom) == true)
 	{
-	Roomlist.insert(*tempRoom);
-	return true;
+		Roomlist.insert(*tempRoom);
+		return true;
 	}
-
-//	else
-//		return false;
+	else
+		return false;
 }
 bool RoomData::CheckIntersection(Room *testRoom) {		//분명 문제 터질거같으니 주의
 	if (Roomlist.empty() == true)

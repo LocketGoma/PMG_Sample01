@@ -72,8 +72,8 @@ bool Room::Generator() {		//생성 1 : 전부 랜덤
 
 	tp_LX = rand() % MAX_AXIS + 1;
 	tp_LY = rand() % MAX_AXIS + 1;
-	tp_RX = tp_LX + (rand() % MAX_LENGTH + 1);		//모든 좌표 랜덤이 아니라
-	tp_RY = tp_LY + (rand() % MAX_LENGTH + 1);		//좌표 + 사이즈 랜덤
+	tp_RX = tp_LX + (rand() % MAX_LENGTH + MIN_LENGTH);		//모든 좌표 랜덤이 아니라
+	tp_RY = tp_LY + (rand() % MAX_LENGTH + MIN_LENGTH);		//좌표 + 사이즈 랜덤
 
 	temp_L = make_pair(tp_LX, tp_LY);
 	temp_R = make_pair(tp_RX, tp_RY);

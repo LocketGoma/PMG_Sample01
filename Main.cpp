@@ -2,6 +2,7 @@
 
 #include "Resource.h"
 #include "RoomData.h"
+#include "InterfaceRoom.h"
 
 void Set_Random_Generator() {
 	srand((unsigned int)time(NULL));
@@ -22,7 +23,7 @@ int main() {
 	*/
 	
 	RoomData* rm = new RoomData();
-	rm->MakeRooms(7);
+	rm->MakeRooms(14);
 	set<Room> rooms = rm->getlist();
 	set<Room>::iterator iter;
 	
@@ -30,7 +31,10 @@ int main() {
 		Room temp = *iter;
 		temp.data_printer();
 	}
-	
+	InterfaceRoom *ifr = new InterfaceRoom();
+
+	ifr->mapprint(&rooms);
+		
 
 	system("pause");
 	return 0;

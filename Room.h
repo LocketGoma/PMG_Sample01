@@ -25,7 +25,7 @@ class Room {						//생성된 방의 정보를 가지고 있는 클래스
 		friend bool operator < (const Room& rm1, const Room& rm2) {
 			Data tp1 = const_cast<Room&>(rm1).getData();
 			Data tp2 = const_cast<Room&>(rm2).getData();
-			return (tp1.CX < tp2.CX && tp1.CY < tp2.CY);
+			return (tp1.CX < tp2.CX);
 		}
 		//~Room();
 
