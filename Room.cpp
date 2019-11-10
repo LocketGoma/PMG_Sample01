@@ -7,6 +7,7 @@
 
 
 //1. 생성 파트
+//* 세부 노드 (노드 내부 데이터)
 int Room::room_no = 0;
 
 Room::Room() {		//좌표값 랜덤, 사이즈 랜덤
@@ -26,11 +27,11 @@ Room::Room() {		//좌표값 랜덤, 사이즈 랜덤
 
 
 }
-void Room::Maker() {
+void Room::Maker() {							//1. 자동 생성
 	Generator();
 }
 
-void Room::Maker(int center_x, int center_y) {	//중심좌표 넣어둠
+void Room::Maker(int center_x, int center_y) {	//2. 중심좌표 지정
 	pair<int, int> center;
 	center = make_pair(center_x,center_y);
 	
@@ -38,8 +39,9 @@ void Room::Maker(int center_x, int center_y) {	//중심좌표 넣어둠
 
 	Generator(center);
 }
+//중심좌표 + 크기 지정도 있어야 하지 않을까?
 
-void Room::Maker(int tp_LX, int tp_LY, int tp_RX, int tp_RY) {	//뭔가 이상한데
+void Room::Maker(int tp_LX, int tp_LY, int tp_RX, int tp_RY) {	//3. 전체 크기 지정
 	is_interaction = false;
 	this->Axis_LX = tp_LX;
 	this->Axis_LY = tp_LY;
@@ -126,7 +128,6 @@ bool Room::Generator(pair<int,int> center) {	//생성 2 : 중심좌표기준, 길이,높이 
 	return true;
 }
 
-
 //2. 검사 파트 (문제 발생시 1로 돌아감)
 bool Room::Valid_Length() {
 	if (width < 1 || height < 1) {
@@ -182,6 +183,26 @@ void Room::data_printer() {
 	cout << "길이 : " << width << "\t높이 : " << height << endl;
 	cout << "---------------" << endl;
 }
+
+Data Room::getData() {
+	Data data;
+	
+	data.UX = Axis_LX;
+	data.UY = Axis_LY;
+
+	data.DX = Axis_RX;
+	data.DY = Axis_RY;
+
+
+	data.CX = Center_X;
+	data.CY = Center_Y;
+
+	data.width = width;
+	data.height = height;
+
+	return data;
+}
+
 //4. 파괴 파트
 /*
 void Room::RoomBreak() {
@@ -189,9 +210,11 @@ void Room::RoomBreak() {
 
 	delete(this);
 }
+
 Room::~Room() {
+	room_no--;
 	try {
-		//free(this);
+		free(this);
 	}
 	catch (exception e) {
 		printf("경고! 생성된 방을 제거도중 오류가 발생하였습니다!");

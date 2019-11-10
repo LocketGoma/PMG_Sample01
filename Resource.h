@@ -3,6 +3,8 @@
 #include <math.h>
 #include <ctime>
 #include <cstdlib>
+#include <memory>
+#include "Data.h"
 
 
 #define BREAK
@@ -10,7 +12,7 @@
 #define MAX_AXIS 99					//좌표 최대값
 #define MIN_LENGTH 1				//길이 최소값
 #define MAX_LENGTH 10				//길이 최대값
-
+#define MAX_Rooms 11				//최대 방 개수
 
 using namespace std;
 

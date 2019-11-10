@@ -5,22 +5,32 @@
 class Room {						//생성된 방의 정보를 가지고 있는 클래스
 	public :
 		Room();
-
-		
 		//void RoomBreak();			//방 파괴, 내부에서 파괴자 호출함.
 
 		bool is_interaction;		//겹치는지 여부 검사
 
 		void Maker();
 		void Maker(int, int);				//기준 좌표값만 받아오는 경우 (중앙점)
-		void Maker(int, int, int, int);	//4개 좌표값을 다 받아오는 경우
+		void Maker(int, int, int, int);		//4개 좌표값을 다 받아오는 경우
 
 		void data_printer();
-		void map_printor();
 
+		Data getData();
+
+		friend bool operator == (const Room& rm1, const Room& rm2) {
+			Data tp1 = const_cast<Room &>(rm1).getData();
+			Data tp2 = const_cast<Room &>(rm2).getData();
+			return (tp1.CX == tp2.CX && tp1.CY == tp2.CY && tp1.height == tp2.height && tp1.width == tp2.width);
+		}
+		friend bool operator < (const Room& rm1, const Room& rm2) {
+			Data tp1 = const_cast<Room&>(rm1).getData();
+			Data tp2 = const_cast<Room&>(rm2).getData();
+			return (tp1.CX < tp2.CX && tp1.CY < tp2.CY);
+		}
+		//~Room();
 
 	private :
-		//~Room();
+		
 		static int room_no;
 
 		bool Generator();
