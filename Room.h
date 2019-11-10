@@ -5,19 +5,22 @@
 class Room {						//생성된 방의 정보를 가지고 있는 클래스
 	public :
 		Room();
-		Room(int, int);				//기준 좌표값만 받아오는 경우 (중앙점)
-		Room(int, int, int, int);	//4개 좌표값을 다 받아오는 경우
+
 		
-		void RoomBreak();			//방 파괴, 내부에서 파괴자 호출함.
+		//void RoomBreak();			//방 파괴, 내부에서 파괴자 호출함.
 
 		bool is_interaction;		//겹치는지 여부 검사
+
+		void Maker();
+		void Maker(int, int);				//기준 좌표값만 받아오는 경우 (중앙점)
+		void Maker(int, int, int, int);	//4개 좌표값을 다 받아오는 경우
 
 		void data_printer();
 		void map_printor();
 
 
 	private :
-		~Room();
+		//~Room();
 		static int room_no;
 
 		bool Generator();

@@ -11,9 +11,13 @@ int main() {
 	Set_Random_Generator();
 
 	Room *rm1 = new Room();
+	rm1->Maker();
 	rm1->data_printer();
-	rm1->data_printer();
+	//rm1->data_printer();
 
+	Room* rm2 = new Room();
+	rm2->Maker();
+	rm2->data_printer();
 
 	system("pause");
 	return 0;

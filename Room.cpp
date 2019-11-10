@@ -12,12 +12,25 @@ int Room::room_no = 0;
 Room::Room() {		//좌표값 랜덤, 사이즈 랜덤
 	is_interaction = false;
 	room_no++;
+
+	this->Axis_LX=0;				//좌측 상단 X
+	this->Axis_LY=0;				//좌측 상단 Y
+	this->Axis_RY=0;				//우측 하단 Y
+	this->Axis_RX=0;				//우측 하단 X
+	this->Center_X=0;				//중심 X
+	this->Center_Y=0;				//중심 Y
+
+
+	this->width=0;					//가로 길이
+	this->height=0;					//세로 길이
+
+
+}
+void Room::Maker() {
 	Generator();
 }
 
-
-Room::Room(int center_x, int center_y) {	//중심좌표 넣어둠
-	room_no++;
+void Room::Maker(int center_x, int center_y) {	//중심좌표 넣어둠
 	pair<int, int> center;
 	center = make_pair(center_x,center_y);
 	
@@ -26,8 +39,7 @@ Room::Room(int center_x, int center_y) {	//중심좌표 넣어둠
 	Generator(center);
 }
 
-Room::Room(int tp_LX, int tp_LY, int tp_RX, int tp_RY) {	//뭔가 이상한데
-	room_no++;
+void Room::Maker(int tp_LX, int tp_LY, int tp_RX, int tp_RY) {	//뭔가 이상한데
 	is_interaction = false;
 	this->Axis_LX = tp_LX;
 	this->Axis_LY = tp_LY;
@@ -47,6 +59,7 @@ Room::Room(int tp_LX, int tp_LY, int tp_RX, int tp_RY) {	//뭔가 이상한데
 	this->width = Axis_RX - Axis_LX;
 	this->height = Axis_RY - Axis_LY;
 }
+
 bool Room::Generator() {		//생성 1 : 전부 랜덤
 	int tp_LX;
 	int tp_LY;
@@ -64,7 +77,7 @@ bool Room::Generator() {		//생성 1 : 전부 랜덤
 	temp_R = make_pair(tp_RX, tp_RY);
 
 
-	if (Valid_Generate(temp_L, temp_R) == true) {
+	//if (Valid_Generate(temp_L, temp_R) == true) {
 		cout << "Hi" << endl;
 		this->Axis_LX = tp_LX;
 		this->Axis_LY = tp_LY;
@@ -76,9 +89,9 @@ bool Room::Generator() {		//생성 1 : 전부 랜덤
 
 		this->width = Axis_RX - Axis_LX;
 		this->height = Axis_RY - Axis_LY;
-	}
-	else
-		return false;
+	//}
+	//else
+	//	return false;
 		
 	return true;
 
@@ -129,7 +142,7 @@ bool Room::Valid_Generate(pair<int, int> axis_L, pair<int, int> axis_R) {			//정
 #ifdef BREAK			//Break 활성화 시
 	{
 		//생성 실패 에러메세지 출력
-		RoomBreak();
+		//RoomBreak();
 		return false;
 	}
 #endif // BREAK
@@ -160,16 +173,17 @@ void Room::Axis_changer() {		//사실 세트값은 vector 써서 쓰는게 나을지도 모름 >.
 //3. 출력 파트
 void Room::data_printer() {
 	cout << "---------------" << endl;
-	cout << "Room No :: " + room_no << endl;
+	cout << "Room No :: " << room_no << endl;
 	cout << endl;
-	cout << "( " + this->Axis_LX << "," << this->Axis_LY + " )\t\t\t";
-	cout << "( " + this->Axis_RX << "," << this->Axis_LY + " )"<<endl;
-	cout << "( " + this->Axis_LX << "," << this->Axis_RY + " )\t\t\t";
-	cout << "( " + this->Axis_RX << "," << this->Axis_RY + " )" << endl;
-	//cout << "길이 : " + width << "높이 : " + height << endl;
+	cout << "( " << this->Axis_LX << "," << this->Axis_LY << " )\t\t\t";
+	cout << "( " << this->Axis_RX << "," << this->Axis_LY <<" )"<<endl;
+	cout << "( " << this->Axis_LX << "," << this->Axis_RY <<" )\t\t\t";
+	cout << "( " << this->Axis_RX << "," << this->Axis_RY <<" )" << endl;
+	cout << "길이 : " << width << "\t높이 : " << height << endl;
 	cout << "---------------" << endl;
 }
 //4. 파괴 파트
+/*
 void Room::RoomBreak() {
 	
 
@@ -177,10 +191,11 @@ void Room::RoomBreak() {
 }
 Room::~Room() {
 	try {
-		free(this);
+		//free(this);
 	}
 	catch (exception e) {
 		printf("경고! 생성된 방을 제거도중 오류가 발생하였습니다!");
 		cout << e.what() << endl;		// <<- 그럼 얘는 뭔데
 	}
 }
+*/
