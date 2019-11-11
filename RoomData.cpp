@@ -36,6 +36,7 @@ bool RoomData::MakeRooms(int max) {
 		tempRoom->Maker();
 		try {
 			while (addRooms(tempRoom) == false) {
+				cout << tempRoom << endl;
 				tempRoom->Maker();
 
 				if (check++ > MAX_TRY) {
@@ -78,6 +79,7 @@ bool RoomData::CheckIntersection(Room *testRoom) {		//분명 문제 터질거같으니 주�
 			return false;
 
 	}	
+
 	return true;
 
 	//return (x1 <= room.x2 && x2 >= room.x1 && y1 <= room.y2 && room.y2 >= room.y1);
