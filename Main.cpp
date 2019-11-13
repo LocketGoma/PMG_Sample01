@@ -26,8 +26,7 @@ int main() {
 	cout << rooms.size() << "Rooms" << endl;
 
 	InterfaceRoom *ifr = new InterfaceRoom();
-	ifr->mapprint(&rooms);
-		
+	ifr->mapprint(&rooms);		
 
 	system("pause");
 	return 0;
