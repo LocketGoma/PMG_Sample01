@@ -5,38 +5,18 @@ RoomData::RoomData() {
 
 }
 bool RoomData::MakeRooms() {
-	int check = 0;
-	while (Roomlist.size() != MAX_Rooms) {
-		Room* tempRoom = new Room;
-
-		tempRoom->Maker();
-		try {
-			while (addRooms(tempRoom) == false) {
-				tempRoom->Maker();
-
-
-				if (check++ > MAX_TRY) {
-					cout << "과도한 중복 체크로 인한 생성 중지" << endl;
-					return false;
-				}
-			}
-		}
-		catch (exception e) {
-			cout << "생성 오류!!" << endl;
-			return false;
-		}
-	}
-	return true;
+	return (MakeRoomsRun(MAX_Rooms));
 }
 bool RoomData::MakeRooms(int max) {
+	return (MakeRoomsRun(max));
+}
+bool RoomData::MakeRoomsRun(int runs) {
 	int check = 0;
-	while (Roomlist.size() != max) {
+	while (Roomlist.size() != runs) {
 		Room* tempRoom = new Room;
-
 		tempRoom->Maker();
 		try {
 			while (addRooms(tempRoom) == false) {
-				cout << tempRoom << endl;
 				tempRoom->Maker();
 
 				if (check++ > MAX_TRY) {

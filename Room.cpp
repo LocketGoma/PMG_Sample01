@@ -80,7 +80,7 @@ bool Room::Generator() {		//생성 1 : 전부 랜덤
 
 
 	//if (Valid_Generate(temp_L, temp_R) == true) {
-		cout << "Hi" << endl;
+		//cout << "Hi" << endl;
 		this->Axis_LX = tp_LX;
 		this->Axis_LY = tp_LY;
 		this->Axis_RX = tp_RX;

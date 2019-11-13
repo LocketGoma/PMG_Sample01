@@ -12,16 +12,20 @@ int main() {
 	Set_Random_Generator();
 	
 	RoomData* rm = new RoomData();
-	rm->MakeRooms(14);
+	rm->MakeRooms();
 	set<Room> rooms = rm->getlist();
 	set<Room>::iterator iter;
 	
+	
+
 	for (iter = rooms.begin(); iter != rooms.end(); ++iter) {		
 		Room temp = *iter;
 		temp.data_printer();
 	}
-	InterfaceRoom *ifr = new InterfaceRoom();
 
+	cout << rooms.size() << "Rooms" << endl;
+
+	InterfaceRoom *ifr = new InterfaceRoom();
 	ifr->mapprint(&rooms);
 		
 

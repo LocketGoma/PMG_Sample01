@@ -12,8 +12,8 @@
 #define MAX_AXIS 50					//좌표 최대값
 #define MIN_LENGTH 3				//길이 최소값
 #define MAX_LENGTH 7				//길이 최대값
-#define MAX_Rooms 11				//최대 방 개수
-#define MAX_TRY MAX_AXIS*(MIN_AXIS+1)
+#define MAX_Rooms 51				//최대 방 개수
+#define MAX_TRY MAX_AXIS*MAX_AXIS
 
 using namespace std;
 
