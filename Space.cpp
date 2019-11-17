@@ -1,5 +1,5 @@
 #include "Space.h"
-
+//¾È¾¸
 
 
 Space::~Space() {
