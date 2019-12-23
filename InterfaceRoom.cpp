@@ -41,3 +41,8 @@ void InterfaceRoom::mapprint(set<Room>* rooms) {
 	cout << endl;
 
 }
+
+bool InterfaceRoom::export_mapdata() {
+
+
+}
