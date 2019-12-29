@@ -42,7 +42,21 @@ void InterfaceRoom::mapprint(set<Room>* rooms) {
 
 }
 
-bool InterfaceRoom::export_mapdata() {
+bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
+	try { //json 양식으로 뽑아내야하는데...
+		if (rooms->empty() == true) {
+			cout << "파일이 정상적이지 않습니다." << endl;
+			make_exception_ptr(bad_exception());
+		}
 
+
+
+
+	}
+	catch (exception e) {
+		cout << e.what() << endl;
+		
+		return false;
+	}
 
 }

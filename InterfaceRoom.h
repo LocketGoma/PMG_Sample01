@@ -11,6 +11,6 @@ class InterfaceRoom {
 			fill_n(&printedmap[0][0], sizeof(printedmap), ' ');
 		}
 		void mapprint(set<Room>* rooms);
-		bool export_mapdata();
+		bool export_mapdata(set<Room>* rooms);
 
 };
