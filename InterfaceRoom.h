@@ -1,6 +1,7 @@
 #pragma once
 #include "Resource.h"
 #include "RoomData.h"
+
 //= Viewer
 
 class InterfaceRoom {
@@ -14,3 +15,5 @@ class InterfaceRoom {
 		bool export_mapdata(set<Room>* rooms);
 
 };
+
+//https://subscription.packtpub.com/book/application_development/9781785286902/1/ch01lvl1sec12/reading-and-writing-json-in-c
