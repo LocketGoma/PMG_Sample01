@@ -33,3 +33,9 @@ using namespace std;
 
 
 */
+
+/*
+https://github.com/Microsoft/vcpkg/
+https://github.com/open-source-parsers/jsoncpp
+
+*/

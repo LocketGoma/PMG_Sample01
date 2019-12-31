@@ -48,7 +48,8 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 			cout << "파일이 정상적이지 않습니다." << endl;
 			throw make_exception_ptr(bad_exception());
 		}
-		+
+		Json::Reader reader;
+		Json::Value root;
 
 
 
