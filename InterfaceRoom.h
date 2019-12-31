@@ -9,7 +9,7 @@ class InterfaceRoom {
 		char printedmap[MAX_AXIS+15][MAX_AXIS + 15];
 
 		InterfaceRoom() {
-			fill_n(&printedmap[0][0], sizeof(printedmap), ' ');
+			fill_n(&printedmap[0][0], sizeof(printedmap), ' ');		//시각화를 위한 "화면" 초기화
 		}
 		void mapprint(set<Room>* rooms);
 		bool export_mapdata(set<Room>* rooms);
