@@ -51,8 +51,24 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 		Json::Reader reader;
 		Json::Value root;
 
+		string outJson = "{";
 
 
+		/*
+		https://subscription.packtpub.com/book/application_development/9781785286902/1/ch01lvl1sec12/reading-and-writing-json-in-c
+
+		int Axis_LX;				//좌측 상단 X
+		int Axis_LY;				//좌측 상단 Y
+		int Axis_RX;				//우측 하단 X
+		int Axis_RY;				//우측 하단 Y
+		int Center_X;				//중심 X
+		int Center_Y;				//중심 Y
+
+			
+		int width;					//가로 길이
+		int height;					//세로 길이
+
+		*/
 
 
 
