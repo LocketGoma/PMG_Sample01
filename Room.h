@@ -1,5 +1,5 @@
 #pragma once
-
+//1개 Object 당 36Byte
 
 
 class Room {						//생성된 방의 정보를 가지고 있는 클래스
@@ -52,5 +52,6 @@ class Room {						//생성된 방의 정보를 가지고 있는 클래스
 			
 		int width;					//가로 길이
 		int height;					//세로 길이
-
+		//실제로 들어가 있어야할게...
+		//room_no + 좌표 4개 + 중심축 2개 + 길이 2개 = 4 + 16 + 8 + 8 = 36
 };
