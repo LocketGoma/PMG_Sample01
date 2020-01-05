@@ -48,8 +48,9 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 			cout << "파일이 정상적이지 않습니다." << endl;
 			throw make_exception_ptr(bad_exception());
 		}
-		Json::Reader reader;
-		Json::Value root;
+		//Json::Reader reader;		//C4996	'Json::Reader::Reader': Use CharReader and CharReaderBuilder instead	
+		Json::CharReaderBuilder reader;		//CharReader = 순수 가상함수 호출 경고 = 인터페이스 or 추상 클래스
+		//Json::Value root;
 
 		string outJson = "{";
 
