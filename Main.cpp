@@ -9,8 +9,11 @@ void Set_Random_Generator() {
 }
 
 int main() {
-	Set_Random_Generator();
-	
+	Set_Random_Generator();	
+
+	//여기다가는 interfaceroom 의 내부함수만 남기고 싹 지우기.
+
+	InterfaceRoom* ifr = new InterfaceRoom();
 	RoomData* rm = new RoomData();
 	rm->MakeRooms();
 	set<Room> rooms = rm->getlist();
@@ -25,8 +28,11 @@ int main() {
 
 	cout << rooms.size() << "Rooms" << endl;
 
-	InterfaceRoom *ifr = new InterfaceRoom();
+	
 	ifr->mapprint(&rooms);		
+
+	
+
 
 	system("pause");
 	return 0;
