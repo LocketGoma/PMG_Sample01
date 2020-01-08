@@ -8,6 +8,9 @@ bool RoomData::MakeRooms() {
 	return (MakeRoomsRun(MAX_Rooms));
 }
 bool RoomData::MakeRooms(int max) {
+	if (max < 1)
+		return (MakeRoomsRun(MAX_Rooms));
+
 	return (MakeRoomsRun(max));
 }
 bool RoomData::MakeRoomsRun(int runs) {

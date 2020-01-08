@@ -15,7 +15,11 @@ int main() {
 
 	InterfaceRoom* ifr = new InterfaceRoom();
 	RoomData* rm = new RoomData();
-	rm->MakeRooms();
+
+	cout << "생성을 윈하는 방 개수를 입력하세요" << endl;
+	int temp;
+	cin >> temp;
+	rm->MakeRooms(temp);
 	set<Room> rooms = rm->getlist();
 	set<Room>::iterator iter;
 	
