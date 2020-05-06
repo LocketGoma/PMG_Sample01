@@ -50,7 +50,7 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 		}
 		//Json::Reader reader;		//C4996	'Json::Reader::Reader': Use CharReader and CharReaderBuilder instead	
 		//Json::CharReaderBuilder reader;		//CharReader = 순수 가상함수 호출 경고 = 인터페이스 or 추상 클래스
-		Json::Value root;
+		//Json::Value root;
 		string outJson = "{";
 		set<Room>::iterator iter;
 		Room rm;

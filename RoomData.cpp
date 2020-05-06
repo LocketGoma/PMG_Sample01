@@ -4,14 +4,15 @@
 RoomData::RoomData() {
 
 }
-bool RoomData::MakeRooms() {
-	return (MakeRoomsRun(MAX_Rooms));
-}
 bool RoomData::MakeRooms(int max) {
 	if (max < 1)
-		return (MakeRoomsRun(MAX_Rooms));
+		max = MAX_Rooms;
 
-	return (MakeRoomsRun(max));
+	auto result = (MakeRoomsRun(max));
+
+	Write_RoomNo();
+
+	return result;
 }
 bool RoomData::MakeRoomsRun(int runs) {
 	int check = 0;
@@ -74,4 +75,19 @@ bool RoomData::CheckIntersection(Room *testRoom) {		//분명 문제 터질거같으니 주�
 }
 set<Room> RoomData::getlist() {
 	return Roomlist;
+}
+// https://elldeekei.tistory.com/entry/STL-stdset-에-저장된-엘리먼트의-값을-바꿔보자
+
+void RoomData::Write_RoomNo() {
+	set<Room>::iterator iter;
+
+	for (iter = Roomlist.begin(); iter != Roomlist.end(); ++iter) {
+		const_cast<Room&>(*iter).Confirm_Room();
+	}
+	//1. iter로 접근하고
+	//2. iter 포인터의 내용물을 받아온 후에
+	//3. 이를 Room 포인터 타입으로 인지하고
+	//4. 3의 상수성을 깨트린다. (접근 및 수정 가능)
+	//5. 값 수정
+
 }

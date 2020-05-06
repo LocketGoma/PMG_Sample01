@@ -17,7 +17,7 @@ int main() {
 	RoomData* rm = new RoomData();
 
 	cout << "생성을 윈하는 방 개수를 입력하세요" << endl;
-	int temp;
+	int temp=0;
 	cin >> temp;
 	rm->MakeRooms(temp);
 	set<Room> rooms = rm->getlist();

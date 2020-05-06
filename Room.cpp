@@ -8,11 +8,11 @@
 
 //1. 생성 파트
 //* 세부 노드 (노드 내부 데이터)
-int Room::room_no = 0;
+//이게 지금 '생성 시도 시' 숫자가 올라가는데...
+int Room::room_count = 0;
 
 Room::Room() {		//좌표값 랜덤, 사이즈 랜덤
 	is_interaction = false;
-	room_no++;
 
 	this->Axis_LX=0;				//좌측 상단 X
 	this->Axis_LY=0;				//좌측 상단 Y
@@ -25,7 +25,7 @@ Room::Room() {		//좌표값 랜덤, 사이즈 랜덤
 	this->width=0;					//가로 길이
 	this->height=0;					//세로 길이
 
-
+	room_no = 0;
 }
 void Room::Maker() {							//1. 자동 생성
 	Generator();
@@ -154,7 +154,14 @@ bool Room::Valid_Generate(pair<int, int> axis_L, pair<int, int> axis_R) {			//정
 	}
 #endif // !BREAK
 
+
+
 	return true;
+}
+void Room::Confirm_Room() {
+	room_count++;
+
+	this->room_no = room_count;
 }
 bool Room::Valid_Axis(pair<int,int> axis) {			//축이 범위를 넘었는지 검사.
 	return axis.first > 0 && axis.second > 0 ? true : false;

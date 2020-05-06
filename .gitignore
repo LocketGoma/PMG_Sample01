@@ -31,3 +31,5 @@ Thumbs.db
 #Ignore folders build by Visual Studio
 ./vs
 ./debug
+x64/Debug/
+.vs/

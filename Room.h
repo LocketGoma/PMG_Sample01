@@ -29,9 +29,12 @@ class Room {						//생성된 방의 정보를 가지고 있는 클래스
 		}
 		//~Room();
 
+		void Confirm_Room();
+
 	private :
 		
-		static int room_no;
+		static int room_count;		//현재까지 만들어진 방 개수.
+		int room_no;				//현재 방 번호.
 
 		bool Generator();
 		bool Generator(pair<int, int>);

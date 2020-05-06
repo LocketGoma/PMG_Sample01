@@ -17,4 +17,5 @@ class RoomData {
 	private :				
 		bool CheckIntersection(Room *);
 		bool MakeRoomsRun(int);	//»ý¼º±â
+		void Write_RoomNo();
 };
