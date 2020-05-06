@@ -49,8 +49,8 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 			throw make_exception_ptr(bad_exception());
 		}
 		//Json::Reader reader;		//C4996	'Json::Reader::Reader': Use CharReader and CharReaderBuilder instead	
-		Json::CharReaderBuilder reader;		//CharReader = 순수 가상함수 호출 경고 = 인터페이스 or 추상 클래스
-		//Json::Value root;
+		//Json::CharReaderBuilder reader;		//CharReader = 순수 가상함수 호출 경고 = 인터페이스 or 추상 클래스
+		Json::Value root;
 		string outJson = "{";
 		set<Room>::iterator iter;
 		Room rm;
@@ -70,6 +70,7 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 
 		/*
 		https://subscription.packtpub.com/book/application_development/9781785286902/1/ch01lvl1sec12/reading-and-writing-json-in-c
+		https://ongamedev.tistory.com/entry/jsoncpp-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC
 
 		int Axis_LX;				//좌측 상단 X
 		int Axis_LY;				//좌측 상단 Y
