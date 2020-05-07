@@ -45,28 +45,38 @@ void InterfaceRoom::mapprint(set<Room>* rooms) {
 bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 	try { //json 양식으로 뽑아내야하는데...
 		if (rooms->empty() == true) {
-			cout << "파일이 정상적이지 않습니다." << endl;
+			cout << "방 생성 정보가 정상적이지 않습니다." << endl;
 			throw make_exception_ptr(bad_exception());
 		}
-		//Json::Reader reader;		//C4996	'Json::Reader::Reader': Use CharReader and CharReaderBuilder instead	
-		//Json::CharReaderBuilder reader;		//CharReader = 순수 가상함수 호출 경고 = 인터페이스 or 추상 클래스
-		//Json::Value root;
-		string outJson = "{";
-		set<Room>::iterator iter;
-		Room rm;
-		Data temp;
+		//chrono time -> string
+		//time_t tt = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+		//stringstream stm;
+		//stm << std::put_time(std::localtime(&tt),"%YY%mm%dd%H%M%S") << ".json";
+		
+		std::unique_ptr<std::ofstream> outputFile;
+		outputFile = std::make_unique<std::ofstream>("test.json");
 
-		for (iter = rooms->begin(); iter == rooms->end(); ++iter) {
-			rm = *iter;
-			temp = rm.getData();
-			
-			outJson += "Axis_LX" + temp.UX;
-			//대충 이런식?
+		if (outputFile->is_open()) {
+			*outputFile << "{\n  \"RoomCount\" : " << rooms->size() << endl;
+			*outputFile << "  \"Room\":[" << endl;
+			for (auto room : *rooms) {
+				auto roomdata = room.getData();
+				*outputFile << "    {" << endl;
+				*outputFile << "    \"RoomNo\" : \"" << roomdata.roomNo << "\"," << endl;
+				*outputFile << "    \"Axis_LX\" : \"" << roomdata.UX << "\"," << endl;
+				*outputFile << "    \"Axis_LY\" : \"" << roomdata.UY << "\"," << endl;
+				*outputFile << "    \"Axis_RX\" : \"" << roomdata.DX << "\"," << endl;
+				*outputFile << "    \"Axis_RY\" : \"" << roomdata.DY << "\"" << endl;
+				if (roomdata.roomNo != rooms->size())
+					*outputFile << "    },"<<endl;				
+				else 
+					*outputFile << "    }" << endl;
+			}
+			*outputFile << "  ]\n}" << endl;
 
-
+			outputFile->close();
 		}
-
-
+		return true;
 
 		/*
 		https://subscription.packtpub.com/book/application_development/9781785286902/1/ch01lvl1sec12/reading-and-writing-json-in-c

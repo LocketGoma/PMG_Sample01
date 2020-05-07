@@ -194,6 +194,8 @@ void Room::data_printer() {
 Data Room::getData() {
 	Data data;
 	
+	data.roomNo = room_no;
+
 	data.UX = Axis_LX;
 	data.UY = Axis_LY;
 

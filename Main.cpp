@@ -35,7 +35,7 @@ int main() {
 	
 	ifr->mapprint(&rooms);		
 
-	
+	ifr->export_mapdata(&rooms);
 
 
 	system("pause");

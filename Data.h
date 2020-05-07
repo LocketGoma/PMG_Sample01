@@ -2,6 +2,8 @@
 #include "Resource.h"
 typedef struct Data
 {
+	int roomNo = 0;
+
 	//аб╩С╢э X,Y
 	int UX = 0;
 	int UY = 0;
