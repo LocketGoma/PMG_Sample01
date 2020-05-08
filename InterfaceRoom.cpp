@@ -49,15 +49,15 @@ bool InterfaceRoom::export_mapdata(set<Room>* rooms) {
 			throw make_exception_ptr(bad_exception());
 		}
 		//chrono time -> string
-		//time_t tt = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+		//std::chrono::system_clock::now();
 		//stringstream stm;
 		//stm << std::put_time(std::localtime(&tt),"%YY%mm%dd%H%M%S") << ".json";
 		
 		std::unique_ptr<std::ofstream> outputFile;
-		outputFile = std::make_unique<std::ofstream>("test.json");
+		outputFile = std::make_unique<std::ofstream>("result.json");
 
 		if (outputFile->is_open()) {
-			*outputFile << "{\n  \"RoomCount\" : " << rooms->size() << endl;
+			*outputFile << "{\n  \"RoomCount\" : \"" << rooms->size() << "\"," << endl;
 			*outputFile << "  \"Room\":[" << endl;
 			for (auto room : *rooms) {
 				auto roomdata = room.getData();
