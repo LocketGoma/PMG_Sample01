@@ -18,7 +18,7 @@ void InterfaceRoom::mapprint(set<Room>* rooms) {
 				//	printedmap[i][j] = ar + 48;					
 				//}
 				//else
-					printedmap[i][j] = '*';
+					printedmap[i][j] = 'W';
 			}
 		}
 		//ar++;
